@@ -1,17 +1,17 @@
 # Third-party notices
 
-Desktop Buddy is built with the following open-source components. This file exists
+Teo is built with the following open-source components. This file exists
 to satisfy their attribution/notice requirements.
 
 ## sharp / libvips — LGPL-3.0-or-later AND Apache-2.0
 
-Desktop Buddy bundles `sharp` (an optional dependency of `@huggingface/transformers`,
-which Desktop Buddy uses only for on-device voice synthesis — sharp's own image-
+Teo bundles `sharp` (an optional dependency of `@huggingface/transformers`,
+which Teo uses only for on-device voice synthesis — sharp's own image-
 processing features are never invoked). sharp wraps libvips, licensed under
 LGPL-3.0-or-later. Per the LGPL, this notice is provided, the license text is
 reproduced below, and the component is loaded as a separate, independently
 replaceable native module (`node_modules/@img/sharp-win32-x64`) rather than
-compiled into Desktop Buddy's own code.
+compiled into Teo's own code.
 
 - Project: https://github.com/lovell/sharp
 - License text: https://github.com/lovell/sharp/blob/main/LICENSE
@@ -34,8 +34,8 @@ itself embeds a WebAssembly build of eSpeak NG
 (https://github.com/espeak-ng/espeak-ng, GPL-3.0-or-later) to do that
 conversion.
 
-To keep eSpeak NG's GPL-3.0 code genuinely separate from Desktop Buddy's own
-proprietary code — rather than linked into the same process — Desktop Buddy runs it
+To keep eSpeak NG's GPL-3.0 code genuinely separate from Teo's own
+proprietary code — rather than linked into the same process — Teo runs it
 in its own isolated child process (`phonemizer.worker.cjs`), communicating
 only over stdio, the same arm's-length relationship as shelling out to any
 other external GPL command-line tool. The unmodified eSpeak NG/phonemizer.js

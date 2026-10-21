@@ -82,7 +82,7 @@ Conosci **Teo**: salta quando lo clicchi, si arrampica sulle finestre e sulle ca
 
 ### Download e installazione
 
-1. Apri la pagina delle [**Release**](../../../releases/latest) e scarica `Desktop-Buddy-Setup-<versione>.exe`.
+1. Apri la pagina delle [**Release**](../../../releases/latest) e scarica `Teo-Setup-<versione>.exe`.
 2. Eseguilo. L'installer è **per singolo utente** — **non servono permessi di amministratore**.
 3. Teo entra camminando lungo la barra e ti saluta.
 

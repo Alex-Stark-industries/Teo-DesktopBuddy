@@ -1,6 +1,6 @@
 # Privacy
 
-Short version: **Teo (Desktop Buddy) collects nothing.** No account, no analytics,
+Short version: **Teo collects nothing.** No account, no analytics,
 no telemetry, no crash reporting, nothing sent to us, ever. It has no usage
 limits and needs no subscription of any kind (AI-assistant or otherwise).
 

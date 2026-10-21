@@ -5,7 +5,7 @@ A step-by-step guide for your very first run — nothing assumed.
 ## 1. Install
 
 1. Go to the [Releases page](../../releases/latest) and download
-   `Desktop-Buddy-Setup-<version>.exe`.
+   `Teo-Setup-<version>.exe`.
 2. Double-click it. You'll see an installer window — no administrator
    password is needed, it installs just for your own user account.
 3. Pick where to install it (or keep the default) and click through.

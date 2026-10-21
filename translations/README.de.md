@@ -82,7 +82,7 @@ Das ist **Teo**: Er hüpft, wenn du ihn anklickst, klettert auf die Fenster und 
 
 ### Download & Installation
 
-1. Öffne die [**Releases**](../../../releases/latest)-Seite und lade `Desktop-Buddy-Setup-<Version>.exe` herunter.
+1. Öffne die [**Releases**](../../../releases/latest)-Seite und lade `Teo-Setup-<Version>.exe` herunter.
 2. Führe sie aus. Der Installer ist **benutzerbezogen** — er braucht **keine Administratorrechte**.
 3. Teo läuft an der Taskleiste entlang herein und begrüßt dich.
 

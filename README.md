@@ -85,7 +85,7 @@ you open, pops up a speech bubble with quick actions, and answers **instantly**,
 ### Download & install
 
 1. Open the [**Releases**](../../releases/latest) page and download
-   `Desktop-Buddy-Setup-<version>.exe`.
+   `Teo-Setup-<version>.exe`.
 2. Run it. The installer is **per-user** — it needs **no administrator rights**.
 3. Teo walks in along the taskbar and says hello.
 

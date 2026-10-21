@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Teo — Desktop Buddy</title>
+<meta name="description" content="Teo is a tiny desk robot who lives on your Windows taskbar. He climbs the windows you open, offers quick actions, gives friendly tips and answers out loud — no language model, no cloud, no subscription." />
+<link rel="icon" href="assets/teo-happy.png" type="image/png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #070b12;
+    --bg-2: #0b111c;
+    --panel: #0d1420;
+    --border: rgba(95, 184, 224, 0.22);
+    --text: #e7f3fb;
+    --muted: #93a8bb;
+    --accent: #5fb8e0;
+    --accent-bright: #8fe3ff;
+    --accent-glow: rgba(95, 184, 224, 0.35);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; padding: 0;
+    color: var(--text);
+    font-family: 'Inter', system-ui, sans-serif;
+    background:
+      radial-gradient(1100px 620px at 12% -8%, rgba(170,178,188,0.16), transparent 60%),
+      radial-gradient(1000px 700px at 88% 6%, rgba(95,184,224,0.09), transparent 60%),
+      linear-gradient(180deg, #0b0d10 0%, #12151a 45%, #0b0d10 100%);
+    background-attachment: fixed;
+  }
+  h1, h2, h3 { font-family: 'Outfit', system-ui, sans-serif; }
+  .brand { font-family: 'Outfit', system-ui, sans-serif; }
+  a { color: var(--accent-bright); }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(7, 11, 18, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; max-width: 1040px; margin: 0 auto; }
+  .brand { font-weight: 500; font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+  .nav-links { display: flex; gap: 28px; font-size: 14px; color: var(--muted); }
+  .nav-links a { color: var(--muted); text-decoration: none; }
+  .nav-links a:hover { color: var(--text); }
+
+  .hero { padding: 72px 24px 64px; text-align: center; position: relative; overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; inset: -20% -10% auto -10%; height: 480px;
+    background: radial-gradient(ellipse at 50% 0%, rgba(95,184,224,0.16), transparent 70%);
+    pointer-events: none;
+  }
+  .wordmark {
+    font-family: 'Unbounded', 'Outfit', system-ui, sans-serif;
+    font-weight: 700; font-size: clamp(56px, 11vw, 128px); line-height: 1;
+    letter-spacing: 0.01em; margin: 4px 0 6px;
+    background: linear-gradient(180deg, #f2f2f2 0%, #bdbdbd 14%, #ffffff 28%, #8f8f8f 42%, #e6e6e6 54%, #6e6e6e 68%, #d4d4d4 82%, #9a9a9a 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    text-shadow: 0 0 50px rgba(200, 210, 220, 0.25);
+  }
+  .stage { position: relative; width: 230px; height: 230px; margin: 0 auto 4px; }
+  .stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transition: opacity 0.12s ease; filter: drop-shadow(0 18px 28px rgba(0,0,0,0.5)); }
+  .stage img.on { opacity: 1; }
+  .stage .bob { position: absolute; inset: 0; animation: bob 3.2s ease-in-out infinite; }
+  .stage .hop { animation: hop 0.55s cubic-bezier(.3,.7,.4,1); }
+  @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+  @keyframes hop { 0% { transform: translateY(0) scale(1.08,.9); } 40% { transform: translateY(-34px) scale(.96,1.06); } 100% { transform: translateY(0) scale(1); } }
+  .shadow { width: 120px; height: 14px; margin: -14px auto 18px; border-radius: 50%; background: radial-gradient(ellipse, rgba(0,0,0,0.5), transparent 70%); }
+  .eyebrow {
+    display: inline-block; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent-bright); border: 1px solid var(--border); border-radius: 999px;
+    padding: 6px 14px; margin-bottom: 22px;
+  }
+  h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 700; line-height: 1.12; margin: 0 0 18px; text-wrap: balance; }
+  h1 .glow { color: var(--accent-bright); text-shadow: 0 0 30px var(--accent-glow); }
+  .sub { font-size: 18px; color: var(--muted); max-width: 600px; margin: 0 auto 34px; line-height: 1.55; }
+  .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; padding: 13px 26px; border-radius: 10px;
+    font-weight: 600; font-size: 15px; text-decoration: none; transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .btn-primary { background: linear-gradient(180deg, var(--accent-bright), var(--accent)); color: #061019; box-shadow: 0 8px 28px rgba(95, 184, 224, 0.35); }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 12px 34px rgba(95, 184, 224, 0.45); }
+  .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent-bright); }
+  .fine-print { margin-top: 16px; font-size: 13px; color: var(--muted); }
+
+  section { padding: 64px 24px; }
+  .section-title { text-align: center; margin-bottom: 44px; }
+  .section-title h2 { font-size: 28px; margin: 0 0 10px; }
+  .section-title p { color: var(--muted); margin: 0; }
+
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 24px; text-align: left; }
+  .card .icon { font-size: 22px; margin-bottom: 12px; }
+  .card h3 { font-size: 16px; margin: 0 0 8px; }
+  .card p { font-size: 14px; color: var(--muted); margin: 0; line-height: 1.55; }
+
+  .shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .shot { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+  .shot img { display: block; width: 100%; height: auto; background: #05080d; }
+  .shot-caption { padding: 14px 18px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--border); line-height: 1.5; }
+  .shot-caption strong { color: var(--text); }
+
+  .install { background: var(--bg-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .steps { display: grid; gap: 18px; max-width: 620px; margin: 0 auto; }
+  .step { display: flex; gap: 16px; align-items: flex-start; }
+  .step-num {
+    flex: none; width: 30px; height: 30px; border-radius: 50%;
+    background: rgba(95,184,224,0.12); border: 1px solid var(--border);
+    color: var(--accent-bright); font-weight: 600; font-size: 14px; display: grid; place-items: center;
+  }
+  .step p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.6; }
+  .step strong { color: var(--text); }
+
+  footer { padding: 40px 24px 60px; text-align: center; color: var(--muted); font-size: 13px; }
+  footer a { color: var(--muted); text-decoration: underline; }
+  footer p { max-width: 560px; margin: 8px auto; line-height: 1.6; }
+
+  @media (max-width: 860px) { .grid, .shots { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .grid, .shots { grid-template-columns: 1fr; } .nav-links { display: none; } }
+  @media (prefers-reduced-motion: reduce) { .stage .bob, .stage .hop { animation: none; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand">Teo</div>
+    <nav class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#screenshots">Screenshots</a>
+      <a href="#install">Install</a>
+      <a href="https://github.com/Alex-Stark-industries/Desktop-Buddy">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wordmark">Teo</div>
+  <div class="stage" id="stage" title="Click me!">
+    <div class="bob" id="bob">
+      <img src="assets/teo-neutral.png" alt="Teo, the Desktop Buddy robot" class="on" data-e="neutral" />
+      <img src="assets/teo-happy.png" alt="" data-e="happy" />
+      <img src="assets/teo-wink.png" alt="" data-e="wink" />
+    </div>
+  </div>
+  <div class="shadow"></div>
+  <div class="eyebrow">Desktop Buddy · Free · Windows · No account</div>
+  <h1>A tiny robot that<br><span class="glow">lives on your taskbar.</span></h1>
+  <p class="sub">Click him and he hops. Open a window and he climbs up to say hi,
+    with quick actions in a speech bubble. He gives friendly tips, sets timers,
+    and answers out loud. No language model, no cloud, no subscription.</p>
+  <div class="cta-row">
+    <a class="btn btn-primary" href="https://github.com/Alex-Stark-industries/Desktop-Buddy/releases/latest">⬇ Download for Windows</a>
+    <a class="btn btn-ghost" href="https://github.com/Alex-Stark-industries/Desktop-Buddy">View on GitHub</a>
+  </div>
+  <p class="fine-print">Free installer · No admin rights needed · Updates itself</p>
+</section>
+
+<section id="features">
+  <div class="wrap">
+    <div class="section-title">
+      <h2>A buddy, not a window</h2>
+      <p>Everything Teo does is a small fixed routine — instant, local and free.</p>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="icon">🧗</div>
+        <h3>He climbs your windows</h3>
+        <p>Open a window or folder: Teo walks over, jumps, climbs the side and perches on the top edge — riding along if you drag it.</p>
+      </div>
+      <div class="card">
+        <div class="icon">✋</div>
+        <h3>Pick him up, drop him anywhere</h3>
+        <p>On the desktop he falls back to the taskbar. On a window's side edge he climbs. Over a window he hops on top.</p>
+      </div>
+      <div class="card">
+        <div class="icon">💬</div>
+        <h3>A bubble that goes away</h3>
+        <p>Quick actions for what you just opened — what's inside a folder, copy its path, search the web — then he leaves you alone.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🔎</div>
+        <h3>He knows where he is</h3>
+        <p>Open Google or YouTube and Teo hops onto the search box and asks what you want to find.</p>
+      </div>
+      <div class="card">
+        <div class="icon">💡</div>
+        <h3>Friendly little tips</h3>
+        <p>Drink water, stand up, rest your eyes, "you just started, keep going!" — with a sense of humor, never during a fullscreen video.</p>
+      </div>
+      <div class="card">
+        <div class="icon">⏰</div>
+        <h3>Pocket assistant</h3>
+        <p>Timers, reminders, quick notes and math, typed in the bubble — local, free and unlimited.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🎙️</div>
+        <h3>A real voice</h3>
+        <p>An on-device neural voice, downloaded once and then fully offline. Choose voice on or off when you launch him.</p>
+      </div>
+      <div class="card">
+        <div class="icon">😴</div>
+        <h3>Quiet mode</h3>
+        <p>One click and he stays out of your way for an hour, then comes back on his own. Reminders still ring.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🔒</div>
+        <h3>Private by default</h3>
+        <p>No accounts, no telemetry, no analytics. He reads window titles and positions — never what's inside, never what you type.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="screenshots">
+  <div class="wrap">
+    <div class="section-title">
+      <h2>See him in action</h2>
+      <p>Real screenshots of Teo on a Windows desktop.</p>
+    </div>
+    <div class="shots">
+      <div class="shot"><img src="docs/screenshots/folder.png" alt="Teo on a folder window with quick actions" loading="lazy" /><div class="shot-caption"><strong>A folder opens.</strong> Teo climbs up and offers a hand.</div></div>
+      <div class="shot"><img src="docs/screenshots/google.png" alt="Teo asking what to search on Google" loading="lazy" /><div class="shot-caption"><strong>He knows the page.</strong> Hops onto Google's search box and asks what to find.</div></div>
+      <div class="shot"><img src="docs/screenshots/menu.png" alt="Teo's quick settings" loading="lazy" /><div class="shot-caption"><strong>Quick settings.</strong> Right-click Teo: Quiet mode, voice, tips.</div></div>
+      <div class="shot"><img src="docs/screenshots/assistant.png" alt="Teo setting a reminder" loading="lazy" /><div class="shot-caption"><strong>Pocket assistant.</strong> Timers, reminders, notes and math in the bubble.</div></div>
+      <div class="shot"><img src="docs/screenshots/tip.png" alt="Teo giving a tip" loading="lazy" /><div class="shot-caption"><strong>Little tips.</strong> A friendly nudge when he's resting.</div></div>
+      <div class="shot"><img src="docs/screenshots/reminder.png" alt="Teo announcing a reminder" loading="lazy" /><div class="shot-caption"><strong>Reminders ring.</strong> Out loud, with a bubble.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="install" id="install">
+  <div class="wrap">
+    <div class="section-title">
+      <h2>Get started in a minute</h2>
+      <p>No model to install first, no account to create.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <p><strong>Download</strong> the installer from the <a href="https://github.com/Alex-Stark-industries/Desktop-Buddy/releases/latest">latest release</a>.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <p><strong>Run it.</strong> No administrator rights needed — it installs just for your account. Windows SmartScreen may warn you since the installer isn't code-signed; click <em>More info → Run anyway</em>.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <p><strong>Say hi to Teo</strong> when he walks in along the taskbar — then open a folder and watch him climb.</p>
+      </div>
+    </div>
+    <div class="cta-row" style="margin-top: 32px;">
+      <a class="btn btn-primary" href="https://github.com/Alex-Stark-industries/Desktop-Buddy/releases/latest">⬇ Download for Windows</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="brand" style="text-align:center; margin-bottom: 8px;">Teo — Desktop Buddy</div>
+  <p>Free to use, every feature, no limits. Not affiliated with, sponsored by, or associated with any
+    film, game, franchise, or brand. "Teo" is simply a friendly name.</p>
+  <p><a href="https://github.com/Alex-Stark-industries/Desktop-Buddy">GitHub</a> ·
+    <a href="https://github.com/Alex-Stark-industries/Desktop-Buddy/blob/main/WELCOME.md">Welcome guide</a> ·
+    <a href="https://github.com/Alex-Stark-industries/Desktop-Buddy/blob/main/GUIDE.md">Guide</a> ·
+    <a href="https://github.com/Alex-Stark-industries/Desktop-Buddy/blob/main/PRIVACY.md">Privacy</a> ·
+    <a href="https://github.com/Alex-Stark-industries/Desktop-Buddy/blob/main/LICENSE">License</a></p>
+</footer>
+
+<script>
+  // Teo on the page: blinks and winks on his own, hops when clicked.
+  (function () {
+    var imgs = {};
+    document.querySelectorAll('#bob img').forEach(function (i) { imgs[i.dataset.e] = i; });
+    function show(e) { for (var k in imgs) imgs[k].classList.toggle('on', k === e); }
+    function later(ms, fn) { setTimeout(fn, ms); }
+    function loop() {
+      later(2200 + Math.random() * 2600, function () {
+        var r = Math.random();
+        if (r < 0.5) { show('happy'); later(1100, function () { show('neutral'); loop(); }); }
+        else if (r < 0.8) { show('wink'); later(700, function () { show('neutral'); loop(); }); }
+        else { show('neutral'); loop(); }
+      });
+    }
+    loop();
+    var bob = document.getElementById('bob');
+    document.getElementById('stage').addEventListener('click', function () {
+      show('happy');
+      bob.classList.remove('hop'); void bob.offsetWidth; bob.classList.add('hop');
+      later(900, function () { bob.classList.remove('hop'); show('neutral'); });
+    });
+  })();
+</script>
+
+</body>
+</html>

@@ -21,6 +21,15 @@
     --accent-bright: #8fe3ff;
     --accent-glow: rgba(95, 184, 224, 0.35);
   }
+  :root[data-char="tea"] {
+    --border: rgba(240, 140, 192, 0.26);
+    --accent: #f08cc0;
+    --accent-bright: #ffc2e0;
+    --accent-glow: rgba(240, 140, 192, 0.38);
+    --wm1: #fff0f8; --wm2: #ffb3da; --wm3: #e06aa6;
+    --wm-glow: rgba(255, 130, 200, 0.5);
+  }
+  :root { --wm1: #e9fbff; --wm2: #8fe3ff; --wm3: #3fa9d6; --wm-glow: rgba(95, 200, 240, 0.45); }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
@@ -61,9 +70,9 @@
     font-family: 'Fredoka', 'Outfit', system-ui, sans-serif;
     font-weight: 700; font-size: clamp(72px, 14vw, 156px); line-height: 1;
     letter-spacing: 0.02em; margin: 0 0 4px;
-    background: linear-gradient(180deg, #e9fbff 0%, #8fe3ff 45%, #3fa9d6 100%);
+    background: linear-gradient(180deg, var(--wm1) 0%, var(--wm2) 45%, var(--wm3) 100%);
     -webkit-background-clip: text; background-clip: text; color: transparent;
-    filter: drop-shadow(0 0 22px rgba(95, 200, 240, 0.45)) drop-shadow(0 4px 0 rgba(8, 28, 44, 0.55));
+    filter: drop-shadow(0 0 22px var(--wm-glow)) drop-shadow(0 4px 0 rgba(8, 28, 44, 0.55));
   }
   .stage { position: relative; width: 230px; height: 230px; margin: 0 auto 4px; }
   .stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transition: opacity 0.12s ease; filter: drop-shadow(0 18px 28px rgba(0,0,0,0.5)); }
@@ -73,6 +82,10 @@
   @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
   @keyframes hop { 0% { transform: translateY(0) scale(1.08,.9); } 40% { transform: translateY(-34px) scale(.96,1.06); } 100% { transform: translateY(0) scale(1); } }
   .shadow { width: 120px; height: 14px; margin: -14px auto 18px; border-radius: 50%; background: radial-gradient(ellipse, rgba(0,0,0,0.5), transparent 70%); }
+  .pick { display: inline-flex; gap: 6px; padding: 5px; border: 1px solid var(--border); border-radius: 999px; margin: 0 0 22px; background: rgba(13, 20, 32, 0.6); }
+  .pick button { font: inherit; font-size: 14px; font-weight: 600; color: var(--muted); background: transparent; border: 0; border-radius: 999px; padding: 7px 18px; cursor: pointer; }
+  .pick button.on { background: linear-gradient(180deg, var(--accent-bright), var(--accent)); color: #1a0d16; }
+  .pick button:not(.on):hover { color: var(--text); }
   .eyebrow {
     display: inline-block; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
     color: var(--accent-bright); border: 1px solid var(--border); border-radius: 999px;
@@ -144,15 +157,19 @@
 </header>
 
 <section class="hero">
-  <div class="wordmark">Teo</div>
+  <div class="wordmark" id="wordmark">Teo</div>
   <div class="stage" id="stage" title="Click me!">
     <div class="bob" id="bob">
-      <img src="assets/teo-neutral.png" alt="Teo, the Desktop Buddy robot" class="on" data-e="neutral" />
-      <img src="assets/teo-happy.png" alt="" data-e="happy" />
-      <img src="assets/teo-wink.png" alt="" data-e="wink" />
+      <img src="assets/teo-neutral.png" alt="Teo, the Desktop Buddy robot" class="on" data-c="teo" data-e="neutral" />
+      <img src="assets/teo-happy.png" alt="" data-c="teo" data-e="happy" />
+      <img src="assets/teo-wink.png" alt="" data-c="teo" data-e="wink" />
+      <img src="assets/tea-neutral.png" alt="Tea, the pink Desktop Buddy robot" data-c="tea" data-e="neutral" />
+      <img src="assets/tea-happy.png" alt="" data-c="tea" data-e="happy" />
+      <img src="assets/tea-wink.png" alt="" data-c="tea" data-e="wink" />
     </div>
   </div>
   <div class="shadow"></div>
+  <div class="pick" role="group" aria-label="Choose your buddy"><button class="on" id="pick-teo" type="button">Teo · blue</button><button id="pick-tea" type="button">Tea · pink</button></div><br>
   <div class="eyebrow">Desktop Buddy · Free · Windows · No account</div>
   <h1>A tiny robot that<br><span class="glow">lives on your taskbar.</span></h1>
   <p class="sub">Click him and he hops. Open a window and he climbs up to say hi,
@@ -205,7 +222,12 @@
       <div class="card">
         <div class="icon">🎙️</div>
         <h3>A real voice</h3>
-        <p>An on-device neural voice, downloaded once and then fully offline. Choose voice on or off when you launch him.</p>
+        <p>An on-device neural voice, downloaded once and then fully offline. One prominent Mute / Unmute button, and you can start silent too.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🎀</div>
+        <h3>Teo or Tea</h3>
+        <p>Pick your buddy: Teo in blue, or Tea in pink with a little hair and a bow — and her own warm voice. Switch any time.</p>
       </div>
       <div class="card">
         <div class="icon">😴</div>
@@ -230,7 +252,8 @@
     <div class="shots">
       <div class="shot"><img src="docs/screenshots/folder.png" alt="Teo on a folder window with quick actions" loading="lazy" /><div class="shot-caption"><strong>A folder opens.</strong> Teo climbs up and offers a hand.</div></div>
       <div class="shot"><img src="docs/screenshots/google.png" alt="Teo asking what to search on Google" loading="lazy" /><div class="shot-caption"><strong>He knows the page.</strong> Hops onto Google's search box and asks what to find.</div></div>
-      <div class="shot"><img src="docs/screenshots/menu.png" alt="Teo's quick settings" loading="lazy" /><div class="shot-caption"><strong>Quick settings.</strong> Right-click Teo: Quiet mode, voice, tips.</div></div>
+      <div class="shot"><img src="docs/screenshots/menu.png" alt="Teo's quick settings" loading="lazy" /><div class="shot-caption"><strong>Quick settings.</strong> Right-click Teo: Mute, Quiet mode, tips.</div></div>
+      <div class="shot"><img src="docs/screenshots/menu-tea.png" alt="Tea's quick settings" loading="lazy" /><div class="shot-caption"><strong>…or Tea.</strong> Pink, with a bow — switch any time from the menu.</div></div>
       <div class="shot"><img src="docs/screenshots/assistant.png" alt="Teo setting a reminder" loading="lazy" /><div class="shot-caption"><strong>Pocket assistant.</strong> Timers, reminders, notes and math in the bubble.</div></div>
       <div class="shot"><img src="docs/screenshots/tip.png" alt="Teo giving a tip" loading="lazy" /><div class="shot-caption"><strong>Little tips.</strong> A friendly nudge when he's resting.</div></div>
       <div class="shot"><img src="docs/screenshots/reminder.png" alt="Teo announcing a reminder" loading="lazy" /><div class="shot-caption"><strong>Reminders ring.</strong> Out loud, with a bubble.</div></div>
@@ -276,27 +299,35 @@
 </footer>
 
 <script>
-  // Teo on the page: blinks and winks on his own, hops when clicked.
+  // The buddy on the page: blinks and winks on his/her own, hops when clicked, and you can pick Teo or Tea.
   (function () {
-    var imgs = {};
-    document.querySelectorAll('#bob img').forEach(function (i) { imgs[i.dataset.e] = i; });
-    function show(e) { for (var k in imgs) imgs[k].classList.toggle('on', k === e); }
+    var char = 'teo';
+    var imgs = [].slice.call(document.querySelectorAll('#bob img'));
+    var mood = 'neutral';
+    function paint() { imgs.forEach(function (i) { i.classList.toggle('on', i.dataset.c === char && i.dataset.e === mood); }); }
     function later(ms, fn) { setTimeout(fn, ms); }
     function loop() {
       later(2200 + Math.random() * 2600, function () {
         var r = Math.random();
-        if (r < 0.5) { show('happy'); later(1100, function () { show('neutral'); loop(); }); }
-        else if (r < 0.8) { show('wink'); later(700, function () { show('neutral'); loop(); }); }
-        else { show('neutral'); loop(); }
+        if (r < 0.5) { mood = 'happy'; paint(); later(1100, function () { mood = 'neutral'; paint(); loop(); }); }
+        else if (r < 0.8) { mood = 'wink'; paint(); later(700, function () { mood = 'neutral'; paint(); loop(); }); }
+        else { loop(); }
       });
     }
     loop();
     var bob = document.getElementById('bob');
-    document.getElementById('stage').addEventListener('click', function () {
-      show('happy');
-      bob.classList.remove('hop'); void bob.offsetWidth; bob.classList.add('hop');
-      later(900, function () { bob.classList.remove('hop'); show('neutral'); });
-    });
+    function hop() { mood = 'happy'; paint(); bob.classList.remove('hop'); void bob.offsetWidth; bob.classList.add('hop'); later(900, function () { bob.classList.remove('hop'); mood = 'neutral'; paint(); }); }
+    document.getElementById('stage').addEventListener('click', hop);
+    function pick(c) {
+      char = c;
+      document.documentElement.dataset.char = c;
+      document.getElementById('wordmark').textContent = c === 'tea' ? 'Tea' : 'Teo';
+      document.getElementById('pick-teo').classList.toggle('on', c === 'teo');
+      document.getElementById('pick-tea').classList.toggle('on', c === 'tea');
+      hop();
+    }
+    document.getElementById('pick-teo').addEventListener('click', function () { pick('teo'); });
+    document.getElementById('pick-tea').addEventListener('click', function () { pick('tea'); });
   })();
 </script>
 

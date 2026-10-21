@@ -13,13 +13,14 @@ Das ist **Teo**: Er hüpft, wenn du ihn anklickst, klettert auf die Fenster und 
 > **Kein Konto. Kein Abo. Kein Sprachmodell. Keine Cloud.**
 > Alle Funktionen, ohne Limits, nichts gesperrt — es funktioniert sogar ohne jedes KI-Abo.
 
-<p align="center"><img src="../docs/screenshots/teo.png" alt="Teo" width="260"></p>
+<p align="center"><img src="../docs/screenshots/teo.png" alt="Teo" width="240"> <img src="../docs/screenshots/tea.png" alt="Tea" width="240"></p>
 
 ---
 
 ### Highlights
 
 - 🤖 **Eine kleine Figur, kein Fenster** — Teo blinzelt, schaut sich um, spaziert herum, schläft ein, wenn du ihn allein lässt, und zeigt echte Gesichtsausdrücke.
+- 🎀 **Teo oder Tea** — Teo in Blau mit männlicher Stimme, oder Tea in Rosa mit Schleife, einem Hauch von Haaren und warmer weiblicher Stimme. Beim ersten Start wählen, jederzeit wechseln.
 - 🧗 **Er klettert auf deine Fenster** — öffne ein Fenster oder einen Ordner, und er kommt herüber, springt, klettert an der Seite hoch und setzt sich auf die Oberkante (und fährt mit, wenn du das Fenster verschiebst).
 - ✋ **Heb ihn hoch und lass ihn überall los** — auf dem leeren Desktop fällt er zurück auf die Taskleiste; an der Seitenkante eines Fensters greift er die Wand und klettert; über einem Fenster springt er auf dessen Oberkante.
 - 💬 **Eine Sprechblase, die von selbst verschwindet** — Schnellaktionen für das, was du gerade geöffnet hast (*Was ist drin?*, *Pfad kopieren*, *Im Web suchen*) plus Mini-Chat; ist die Aufgabe erledigt, verschwindet auch die Blase.

@@ -16,7 +16,9 @@ certificate — which costs real money every year, so small independent
 projects like this one usually skip it. It doesn't mean anything is wrong.
 Click **More info**, then **Run anyway**.
 
-## 2. Meet Teo
+## 2. Meet Teo (or Tea)
+
+The first time, Teo asks who you'd like on your taskbar: **Teo** in blue, or **Tea** in pink with a bow and her own voice. Tap your choice — you can change it any time from the right-click menu ("Switch to Tea" / "Switch to Teo").
 
 Once installed, Teo walks in along the **taskbar** and waves. He stays on top of
 other windows, but never blocks them — you can click straight through him
@@ -49,7 +51,8 @@ Open **Google's or YouTube's home page** in your browser and Teo hops onto the
 Right-click Teo to see the quick settings:
 
 - **Quiet mode** — for one hour he won't climb on his own or give tips (a little "z z" shows). Timers and reminders still ring.
-- **Voice** — on or off. You can also choose at launch: start him with `--voice=off`.
+- **Mute / Unmute** — the big highlighted button: silences the voice, or brings it back. You can also start silent: launch with `--voice=off`.
+- **Switch to Tea / Teo** — change the look and the voice.
 - **Tips** — on or off. **Give me a tip** shows one right now.
 - **Start with Windows** — off by default; Teo never turns it on by himself.
 - **Climb on this window** — send him to the window in front.

@@ -12,23 +12,26 @@ Meet **Teo**: he hops when you click him, climbs up onto the windows and folders
 you open, pops up a speech bubble with quick actions, and answers **instantly**,
 **out loud**, in a real voice — and when the job is done, he goes quietly back home.
 
+**Prefer pink?** Meet **Tea**: the same little robot in pink, with a bow and a touch of hair, and her own warm voice. You choose when you first launch, and can switch any time from the right-click menu.
+
 > **No account. No subscription. No language model. No cloud.**
 > Every feature, no limits, nothing locked — it even works without any AI subscription.
 
-<p align="center"><img src="docs/screenshots/teo.png" alt="Teo, the Desktop Buddy robot" width="260"></p>
+<p align="center"><img src="docs/screenshots/teo.png" alt="Teo, the blue Desktop Buddy robot" width="240"> <img src="docs/screenshots/tea.png" alt="Tea, the pink version with a bow" width="240"></p>
 
 ---
 
 ### Highlights
 
 - 🤖 **A little character, not a window** — Teo blinks, looks around, wanders, falls asleep when you leave him alone, and wears real expressions.
+- 🎀 **Teo or Tea** — blue Teo with a male voice, or pink Tea with a bow, a touch of hair and a warm female voice. Choose at first launch, switch any time.
 - 🧗 **He climbs your windows** — open a window or a folder and he walks over, jumps, climbs the side and perches on the top edge (riding along if you drag it).
 - ✋ **Pick him up and drop him anywhere** — on empty desktop he falls back to the taskbar; on a window's side edge he grabs the wall and climbs; over a window he hops onto its top.
 - 💬 **A speech bubble that goes away by itself** — quick actions for what you just opened (*What's inside?*, *Copy path*, *Search the web*) plus a mini chat; when the task ends, the bubble ends.
 - 🔎 **He knows where he is** — open Google or YouTube and Teo hops onto the search box and asks what you want to find.
 - 💡 **Friendly little tips** — drink water, stand up, rest your eyes, "you just started, keep going!" — funny, spoken, and never when you're watching a video.
 - ⏰ **A pocket assistant** — `timer 10 min`, `remind me at 15:30 to leave`, `note buy milk`, `15% of 80` — all local, all free.
-- 🎙️ **A real voice, on your PC** — a proper on-device neural voice (English), choose voice on/off at launch.
+- 🎙️ **A real voice, on your PC** — a proper on-device neural voice (English), a prominent **Mute / Unmute** button, and you can start silent too.
 - 🪶 **Small and quiet** — no language model, no huge download, no background service.
 
 ---
@@ -53,7 +56,7 @@ you open, pops up a speech bubble with quick actions, and answers **instantly**,
 <tr>
 <td width="50%">
 
-**Quick settings** — right-click Teo. Quiet mode, voice, tips…
+**Quick settings** — right-click: Mute, Quiet mode, tips, and Teo ↔ Tea.
 <img src="docs/screenshots/menu.png" alt="Teo's quick settings menu" width="100%">
 
 </td>

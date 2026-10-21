@@ -13,13 +13,14 @@ Voici **Teo** : il saute quand on clique dessus, grimpe sur les fenêtres et les
 > **Pas de compte. Pas d'abonnement. Pas de modèle de langage. Pas de cloud.**
 > Toutes les fonctions, sans limite, rien de verrouillé — il fonctionne même sans abonnement à une IA.
 
-<p align="center"><img src="../docs/screenshots/teo.png" alt="Teo" width="260"></p>
+<p align="center"><img src="../docs/screenshots/teo.png" alt="Teo" width="240"> <img src="../docs/screenshots/tea.png" alt="Tea" width="240"></p>
 
 ---
 
 ### Points forts
 
 - 🤖 **Un petit personnage, pas une fenêtre** — Teo cligne des yeux, regarde autour de lui, se promène, s'endort si on le laisse seul et affiche de vraies expressions.
+- 🎀 **Teo ou Tea** — Teo en bleu avec une voix masculine, ou Tea en rose avec un nœud, un soupçon de cheveux et une voix féminine chaleureuse. À choisir au premier lancement, modifiable à tout moment.
 - 🧗 **Il grimpe sur vos fenêtres** — ouvrez une fenêtre ou un dossier : il arrive, saute, monte le long du côté et se perche sur le bord supérieur (il suit la fenêtre si vous la déplacez).
 - ✋ **Prenez-le et lâchez-le n'importe où** — sur le bureau vide il retombe sur la barre ; sur le bord latéral d'une fenêtre il s'accroche et grimpe ; au-dessus d'une fenêtre il saute sur son bord supérieur.
 - 💬 **Une bulle qui disparaît toute seule** — des actions rapides pour ce que vous venez d'ouvrir (*Que contient-il ?*, *Copier le chemin*, *Rechercher sur le web*) et un mini-chat ; la tâche finie, la bulle aussi.

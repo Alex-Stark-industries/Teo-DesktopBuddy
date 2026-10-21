@@ -13,13 +13,14 @@ Conoce a **Teo**: salta cuando le haces clic, trepa por las ventanas y carpetas 
 > **Sin cuenta. Sin suscripción. Sin modelo de lenguaje. Sin nube.**
 > Todas las funciones, sin límites, nada bloqueado — funciona incluso sin ninguna suscripción de IA.
 
-<p align="center"><img src="../docs/screenshots/teo.png" alt="Teo" width="260"></p>
+<p align="center"><img src="../docs/screenshots/teo.png" alt="Teo" width="240"> <img src="../docs/screenshots/tea.png" alt="Tea" width="240"></p>
 
 ---
 
 ### Lo más destacado
 
 - 🤖 **Un pequeño personaje, no una ventana** — Teo parpadea, mira a su alrededor, pasea, se duerme si lo dejas solo y tiene expresiones de verdad.
+- 🎀 **Teo o Tea** — Teo en azul con voz masculina, o Tea en rosa con lazo, un toque de pelo y una voz femenina cálida. Elige al primer inicio y cambia cuando quieras.
 - 🧗 **Trepa por tus ventanas** — abre una ventana o una carpeta y llega, salta, sube por el lateral y se posa en el borde superior (y te sigue si la mueves).
 - ✋ **Cógelo y suéltalo donde quieras** — en el escritorio vacío vuelve a caer a la barra; en el borde lateral de una ventana se agarra y trepa; sobre una ventana salta a su borde superior.
 - 💬 **Un globo que desaparece solo** — acciones rápidas para lo que acabas de abrir (*¿Qué hay dentro?*, *Copiar ruta*, *Buscar en la web*) más un minichat; al acabar la tarea, acaba el globo.

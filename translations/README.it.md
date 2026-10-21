@@ -13,13 +13,14 @@ Conosci **Teo**: salta quando lo clicchi, si arrampica sulle finestre e sulle ca
 > **Nessun account. Nessun abbonamento. Nessun modello linguistico. Nessun cloud.**
 > Tutte le funzioni, senza limiti, niente di bloccato — funziona anche senza alcun abbonamento a un'IA.
 
-<p align="center"><img src="../docs/screenshots/teo.png" alt="Teo" width="260"></p>
+<p align="center"><img src="../docs/screenshots/teo.png" alt="Teo" width="240"> <img src="../docs/screenshots/tea.png" alt="Tea" width="240"></p>
 
 ---
 
 ### Punti di forza
 
 - 🤖 **Un piccolo personaggio, non una finestra** — Teo sbatte le palpebre, si guarda intorno, passeggia, si addormenta se lo lasci solo e ha vere espressioni.
+- 🎀 **Teo o Tea** — Teo blu con voce maschile, oppure Tea rosa con fiocco, un accenno di capelli e una voce femminile calda. Scegli al primo avvio, cambia quando vuoi.
 - 🧗 **Si arrampica sulle tue finestre** — apri una finestra o una cartella e lui arriva, salta, sale lungo il lato e si appollaia sul bordo alto (e ti segue se la sposti).
 - ✋ **Prendilo e lascialo ovunque** — sul desktop vuoto ricade sulla barra; sul bordo laterale di una finestra si aggrappa e sale; sopra una finestra salta sul suo bordo alto.
 - 💬 **Un fumetto che sparisce da solo** — azioni rapide per ciò che hai appena aperto (*Cosa c'è dentro?*, *Copia percorso*, *Cerca sul web*) più una mini chat; finito il lavoro, finisce il fumetto.

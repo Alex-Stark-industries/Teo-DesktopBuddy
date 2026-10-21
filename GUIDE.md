@@ -45,7 +45,8 @@ search box — never what you type on the page or anything else in it.) *No than
 | Setting | What it does |
 |---|---|
 | **Quiet mode** | For one hour Teo won't climb on his own or give tips; a little "z z" shows. It ends by itself. Timers and reminders still ring. |
-| **Voice: On/Off** | Speak answers out loud or stay silent. You can also choose when you start him: launch with `--voice=off` or `--voice=on` (add it to the shortcut's *Target*). |
+| **Mute / Unmute** | The highlighted button at the top. Mute silences the voice (and the button then says Unmute); it's remembered. You can also choose when you start: launch with `--voice=off` or `--voice=on` (add it to the shortcut's *Target*). |
+| **Switch to Tea / Teo** | Teo is blue with a male voice; Tea is pink, with a bow and a touch of hair, and a warm female voice. Asked on first launch; change any time here. |
 | **Tips: On/Off** | The little life tips. |
 | **Give me a tip** | A tip right now. |
 | **Start with Windows: On/Off** | Whether Teo starts when you log in. Off by default — he never turns it on by himself. |
